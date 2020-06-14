@@ -85,7 +85,7 @@ $(document).ready(function(){
                     "<button class='btn btn-danger note-delete'>x</button>",
                     "</li>"
                 ].join(""));
-                currentNote.children("button").data.("_id", data.notes[i]._id);
+                currentNote.children("button").data("_id", data.notes[i]._id);
                 notesToRender.push(currentNote);
             }
         }

@@ -7,7 +7,7 @@ var scrape = function (cb) {
 
         var articles = [];
 
-        $(".").each(function(i, element) {
+        $(".gs-c-promo").each(function(i, element) {
             var head = $(this).children(".gs-c-promo-heading").text().trim();
             var sum = $(this).children(".gs-c-promo-summary").text().trim();
 
