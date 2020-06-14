@@ -35,6 +35,36 @@ body {
     right: 0;
 }
 
+.navbar-inverse .navbar-nav>li.a.scrape-new:hover {
+    background: grey;
+}
+
+.navbar-inverse .navbar-nav>li.a.scrape-new:active {
+    background: green;
+}
+
+.scrape-new {
+    cursor: pointer;
+}
+
+.m-top-80 {
+    margin-top: 80px;
+}
+
+.bootbox-body .btn {
+    float: right;
+    margin: 5px;
+}
+
+.note.list-group-item {
+    padding: 20px;
+}
+
+.note.list-group-item .btn {
+    position: relative;
+    bottom: 10px;
+}
+
 
 
 
