@@ -8,13 +8,14 @@ var scrape = function (cb) {
         var articles = [];
 
         $(".gs-c-promo").each(function(i, element) {
-            var head = $(this).children(".gs-c-promo-heading").text().trim();
-            console.log(head);
-            var sum = $(this).children(".gs-c-promo-summary").text().trim();
+            var head = $(this).find(".gs-c-promo-heading")[0];
+            head = $(head).text().trim();
+            var summary = $(this).find(".gs-c-promo-summary")[0];
+            summary = $(summary).text().trim();
 
-            if (head && sum) {
+            if (head && summary) {
                 var headNeat = head.replace(/(\r\n|\r|\t|\s+)/gm, " ").trim();
-                var sumNeat = sum.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
+                var sumNeat = summary.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
 
                 var dataToAdd = {
                     headline: headNeat, 

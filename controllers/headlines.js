@@ -24,6 +24,12 @@ module.exports = {
     Headline.remove(query, cb);
   },
   get: function (query, cb) {
+    if (query.saved && query.saved === "false") {
+      query.saved = false
+    }
+    if (query.saved && query.saved === "true"){
+      query.saved = true
+    }
     Headline.find(query)
       .sort({
         _id: -1,
