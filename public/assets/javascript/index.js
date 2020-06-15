@@ -60,7 +60,7 @@ $(document).ready(function () {
         "</div>",
         "<div class='panel-body text-center'>",
         "<h4><a class='scrape-new'>Try Scraping New Stories</a></h4>",
-        "<h4><a href='/saved'>Got to Saved Stories</a></h4>",
+        "<h4><a href='/saved'>Go to Saved Stories</a></h4>",
         "</div>",
         "</div>",
       ].join("")
@@ -69,7 +69,7 @@ $(document).ready(function () {
   }
 
   function handleArticleSave() {
-    var articleToSave = this.parents(".panel").data();
+    var articleToSave = $(this).parents(".panel").data();
     articleToSave.saved = true;
 
     $.ajax({

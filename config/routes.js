@@ -1,3 +1,4 @@
+// server routes
 var scrape = require("../scripts/scrape");
 
 var headlinesController = require("../controllers/headlines");

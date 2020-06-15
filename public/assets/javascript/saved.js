@@ -59,7 +59,7 @@ $(document).ready(function () {
         "</div>",
         "<div class='panel panel-default'>",
         "<div class='panel-heading text-center'>",
-        "<h3>Would you like to browse available Stories?</h3>",
+        "<h3>Would you like to browse available stories?</h3>",
         "</div>",
         "<div class='panel-body text-center'>",
         "<h4><a href='/'>Browse Stories</a></h4>",
@@ -94,13 +94,15 @@ $(document).ready(function () {
         notesToRender.push(currentNote);
       }
     }
+    $(".note-container").append(notesToRender);
   }
 
   function handleArticleDelete() {
     var articleToDelete = $(this).parents(".panel").data();
+
     $.ajax({
       method: "DELETE",
-      url: "/api/headlines" + articleToDelete._id,
+      url: "/api/headlines/" + articleToDelete._id,
     }).then(function (data) {
       if (data.ok) {
         initPage();
@@ -110,6 +112,7 @@ $(document).ready(function () {
 
   function handleArticleNotes() {
     var currentArticle = $(this).parents(".panel").data();
+
     $.get("/api/notes/" + currentArticle._id).then(function (data) {
       var modalText = [
         "<div class='container-fluid text-center'>",
@@ -123,6 +126,7 @@ $(document).ready(function () {
         "<button class='btn btn-success save'>Save Note</button>",
         "</div>",
       ].join("");
+
       bootbox.dialog({
         message: modalText,
         closeButton: true,
@@ -139,12 +143,13 @@ $(document).ready(function () {
   function handleNoteSave() {
     var noteData;
     var newNote = $(".bootbox-body textarea").val().trim();
+
     if (newNote) {
       noteData = {
         _id: $(this).data("article")._id,
         noteText: newNote,
       };
-      $.post("/api/notes", nnoteData).then(function () {
+      $.post("/api/notes", noteData).then(function () {
         bootbox.hideAll();
       });
     }
@@ -152,6 +157,7 @@ $(document).ready(function () {
 
   function handleNoteDelete() {
     var noteToDelete = $(this).data("_id");
+    
     $.ajax({
       url: "/api/notes/" + noteToDelete,
       method: "DELETE",

@@ -1,18 +1,18 @@
 var scrape = require("../scripts/scrape");
 var makeDate = require("../scripts/date");
 
-var Headline = require("../models/Headline");
+var headline = require("../models/Headline");
 
 module.exports = {
   fetch: function (cb) {
-    scrape(function (data) {
+    return scrape(function (data) {
       var articles = data;
       for (var i = 0; i < articles.length; i++) {
         articles[i].date = makeDate();
         articles[i].saved = false;
       }
 
-      Headline.collection.insertMany(articles, { ordered: false }, function (
+      headline.collection.insertMany(articles, { ordered: false }, function (
         err,
         docs
       ) {
@@ -21,7 +21,7 @@ module.exports = {
     });
   },
   delete: function (query, cb) {
-    Headline.remove(query, cb);
+    headline.remove(query, cb);
   },
   get: function (query, cb) {
     if (query.saved && query.saved === "false") {
@@ -30,7 +30,7 @@ module.exports = {
     if (query.saved && query.saved === "true"){
       query.saved = true
     }
-    Headline.find(query)
+    headline.find(query)
       .sort({
         _id: -1,
       })
@@ -39,7 +39,7 @@ module.exports = {
       });
   },
   update: function (query, cb) {
-    Headline.update(
+    headline.update(
       { _id: query._id },
       {
         $set: query,

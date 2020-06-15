@@ -1,5 +1,6 @@
 var request = require("request");
 var cheerio = require("cheerio");
+var axios = require("axios");
 
 var scrape = function (cb) {
     request("https://www.bbc.com/news", function(err, res, body) {
@@ -14,7 +15,7 @@ var scrape = function (cb) {
             summary = $(summary).text().trim();
 
             if (head && summary) {
-                var headNeat = head.replace(/(\r\n|\r|\t|\s+)/gm, " ").trim();
+                var headNeat = head.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
                 var sumNeat = summary.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
 
                 var dataToAdd = {

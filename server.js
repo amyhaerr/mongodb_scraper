@@ -5,7 +5,7 @@ var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 
 // set up port
-var PORT = process.env.PORT || 3030;
+var PORT = process.env.PORT || 3000;
 
 // start our express app
 var app = express();
