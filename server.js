@@ -4,7 +4,7 @@ var expressHandlebars = require("express-handlebars");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 
-// set up port 
+// set up port
 var PORT = process.env.PORT || 3030;
 
 // start our express app
@@ -20,15 +20,20 @@ require("./config/routes")(router);
 app.use(express.static(__dirname + "/public"));
 
 // connect to handlebars
-app.engine("handlebars", expressHandlebars ({
-    defaultLayout: "main"
-}));
+app.engine(
+  "handlebars",
+  expressHandlebars({
+    defaultLayout: "main",
+  })
+);
 app.set("view engine", "handlebars");
 
 // Body-parser for the app
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+  })
+);
 
 // Middleware
 app.use(router);
@@ -37,16 +42,15 @@ app.use(router);
 var db = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
 // Connect mongoose to database
-mongoose.connect(db, function(error) {
-    if (error) {
-        console.log(error);
-    }
-    else {
-        console.log("mongoose connection succeeded");
-    }
+mongoose.connect(db, function (error) {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("mongoose connection succeeded");
+  }
 });
 
 // Port for listening
-app.listen(PORT, function() {
-    console.log("App is listening on port:" + PORT);
+app.listen(PORT, function () {
+  console.log("App is listening on port:" + PORT);
 });

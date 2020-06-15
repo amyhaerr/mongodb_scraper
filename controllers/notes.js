@@ -7,7 +7,8 @@ module.exports = {
       {
         _headlineId: data._id,
       },
-      cb);
+      cb
+    );
   },
   save: function (data, cb) {
     var newNote = {
@@ -24,9 +25,12 @@ module.exports = {
       }
     });
   },
-  delete: function(data, cb) {
-      Note.remove({
-          _id: data._id
-      }, cb);
-  }
+  delete: function (data, cb) {
+    Note.remove(
+      {
+        _id: data._id,
+      },
+      cb
+    );
+  },
 };

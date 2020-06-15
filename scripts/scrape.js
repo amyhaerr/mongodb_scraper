@@ -9,6 +9,7 @@ var scrape = function (cb) {
 
         $(".gs-c-promo").each(function(i, element) {
             var head = $(this).children(".gs-c-promo-heading").text().trim();
+            console.log(head);
             var sum = $(this).children(".gs-c-promo-summary").text().trim();
 
             if (head && sum) {
