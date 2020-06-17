@@ -4,14 +4,20 @@ var cheerio = require("cheerio");
 var axios = require("axios");
 
 var scrape = function (cb) {
-    return axios.get("https://www.bbc.com/news").then(function(res){
-        var $ = cheerio.load(res.data)
+     request("https://www.bbc.com/news", function(err,res, body){
+        var $ = cheerio.load(body);
         var articles = [];
         $(".gs-c-promo").each(function(i, element) {
             console.log(element)
-            var head = $(this).find(".gs-c-promo-heading").text().trim();
-            var url = $(this).find("a").text().trim();
-            var sum = $(this).find(".gs-c-promo-summary").text().trim();
+            var head = $(this).find(".gs-c-promo-heading");
+            head = $(head).text().trim();
+            console.log("headline: " + head);
+            var url = $(this).find("a");
+            url = $(url).text().trim();
+            console.log("url: " + url)
+            var sum = $(this).find(".gs-c-promo-summary");
+            sum = $(sum).text().trim();
+            console.log("summary: " + sum)
             
             if(head && url && sum)
             
