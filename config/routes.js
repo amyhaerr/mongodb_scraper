@@ -15,7 +15,9 @@ module.exports = function (router) {
   });
 
   router.get("/api/fetch", function (req, res) {
+    console.log("Anything test")
     headlinesController.fetch(function (err, docs) {
+      console.log(docs)
       if (!docs || docs.insertedCount === 0) {
         res.json({
           message:

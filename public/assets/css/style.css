@@ -4,7 +4,7 @@ html {
 }
 body {
     margin-bottom: 80px;
-    background-image: url("../images/absolutvision-WYd_PkCa1BY-unsplash.jpg");
+    background-image: url("../images/news.jpg");
 }
 .footer {
     position: absolute;
@@ -19,10 +19,11 @@ body {
 .jumbotron {
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 300px;
     font-family: "";
     padding: 0;
-    box-shadow: 10px 5px 20px 2px lightslategray
+    box-shadow: 10px 5px 20px 2px lightslategray;
+    background-image: url(../images/news.jpg)
 }
 .jumbotron .overlay {
     background: linear-gradient(#333, black);
