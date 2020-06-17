@@ -9,13 +9,13 @@ var scrape = function (cb) {
         var articles = [];
         $(".gs-c-promo").each(function(i, element) {
             console.log(element)
-            var head = $(this).find(".gs-c-promo-heading");
+            var head = $(this).find(".gs-c-promo-heading")[0];
             head = $(head).text().trim();
             console.log("headline: " + head);
-            var url = $(this).find("a");
+            var url = $(this).find("a")[0];
             url = $(url).text().trim();
             console.log("url: " + url)
-            var sum = $(this).find(".gs-c-promo-summary");
+            var sum = $(this).find(".gs-c-promo-summary")[0];
             sum = $(sum).text().trim();
             console.log("summary: " + sum)
             
